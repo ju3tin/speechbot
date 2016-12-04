@@ -1,4 +1,3 @@
-
 import sqlite3 as lite
 import sys
 
@@ -9,9 +8,6 @@ WORD = re.compile(r'\w+')
 questions = []
 questionsVect = []
 answers = []
-
-
-
 
 def get_cosine(vec1, vec2):
      intersection = set(vec1.keys()) & set(vec2.keys())
@@ -61,10 +57,23 @@ def returnBestAnswer( question ):
             bestIndex  = k
             maxScore = score
         k = k +1
-    return(answers[bestIndex])
+        
+    print (maxScore)
+    if maxScore > 0.5:
+        bestAnswer = answers[bestIndex]
+    else:
+        bestAnswer = "Sorry couldn't understand the question"
+    
+    return(bestAnswer)
                 
+if __name__== '__main__':
+    print ("in main")
+    gatherData()
 
+    testQuestions = ["What do the fuck are you doing",
+                    "When is visiting hours?"]
 
-gatherData()
-bestAnswer = returnBestAnswer("When is visiting hours?")
-print(bestAnswer)
+    for question in testQuestions:
+        bestAnswer = returnBestAnswer(question)
+        print(bestAnswer)
+
