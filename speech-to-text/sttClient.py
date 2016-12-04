@@ -18,6 +18,10 @@
 # Date   2015
 
 # coding=utf-8
+import sys
+sys.path.append('../../')
+
+from speechbot import QA
 import speechbot.QA.dataInterface as dataInt 
 import json                                      # json 
 import threading                                 # multi threading
@@ -337,11 +341,12 @@ if __name__ == '__main__':
          print str(key) + ": ", value['status']['code'], " REASON: ", value['status']['reason']
       
       dataInt.gatherData()
+      hypothesis = value['hypothesis'].encode('utf-8') 
+      bestAnswer = dataInt.returnBestAnswer(hypothesis)
+      print (bestAnswer)
 
 
-
-
-      f.write(value['hypothesis'].encode('utf-8') + "\n")
+      f.write(hypothesis + "\n")
      
 #            f.write(str(counter) + ": " + value['hypothesis'].encode('utf-8') + "\n")
 

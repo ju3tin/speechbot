@@ -27,7 +27,7 @@ def text_to_vector(text):
      return Counter(words)
 
 def gatherData():
-    con = lite.connect('SQLiteStudio/techCrunch2016DB')
+    con = lite.connect('../QA/SQLiteStudio/techCrunch2016DB')
 
     with con:    
         
