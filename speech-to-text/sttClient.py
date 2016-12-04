@@ -334,7 +334,17 @@ if __name__ == '__main__':
             emptyHypotheses += 1
       else:
          print str(key) + ": ", value['status']['code'], " REASON: ", value['status']['reason']
-      f.write(str(counter) + ": " + value['hypothesis'].encode('utf-8') + "\n")
+      
+
+
+
+
+      f.write(value['hypothesis'].encode('utf-8') + "\n")
+     
+#            f.write(str(counter) + ": " + value['hypothesis'].encode('utf-8') + "\n")
+
+
+
       counter += 1
    f.close()
    print "successful sessions: ", successful, " (", len(summary)-successful, " errors) (" + str(emptyHypotheses) + " empty hypotheses)"
