@@ -1,0 +1,113 @@
+{
+    "result_index": 0, 
+    "results": [
+        {
+            "alternatives": [
+                {
+                    "timestamps": [
+                        [
+                            "when", 
+                            0.72, 
+                            1.05
+                        ]
+                    ], 
+                    "transcript": "when "
+                }
+            ], 
+            "final": false
+        }
+    ]
+}{
+    "result_index": 0, 
+    "results": [
+        {
+            "alternatives": [
+                {
+                    "timestamps": [
+                        [
+                            "what", 
+                            0.72, 
+                            1.03
+                        ], 
+                        [
+                            "can", 
+                            1.12, 
+                            1.32
+                        ], 
+                        [
+                            "I", 
+                            1.32, 
+                            1.48
+                        ], 
+                        [
+                            "eat", 
+                            1.48, 
+                            1.93
+                        ]
+                    ], 
+                    "transcript": "what can I eat "
+                }
+            ], 
+            "final": false
+        }
+    ]
+}{
+    "result_index": 0, 
+    "results": [
+        {
+            "alternatives": [
+                {
+                    "confidence": 0.463, 
+                    "timestamps": [
+                        [
+                            "what", 
+                            0.72, 
+                            1.03
+                        ], 
+                        [
+                            "can", 
+                            1.12, 
+                            1.32
+                        ], 
+                        [
+                            "I", 
+                            1.32, 
+                            1.48
+                        ], 
+                        [
+                            "eat", 
+                            1.48, 
+                            1.98
+                        ]
+                    ], 
+                    "transcript": "what can I eat ", 
+                    "word_confidence": [
+                        [
+                            "what", 
+                            0.431
+                        ], 
+                        [
+                            "can", 
+                            0.056
+                        ], 
+                        [
+                            "I", 
+                            0.932
+                        ], 
+                        [
+                            "eat", 
+                            0.496
+                        ]
+                    ]
+                }, 
+                {
+                    "transcript": "what kind I eat "
+                }, 
+                {
+                    "transcript": "what could I eat "
+                }
+            ], 
+            "final": true
+        }
+    ]
+}

@@ -251,7 +251,7 @@ if __name__ == '__main__':
    parser.add_argument('-model', action='store', dest='model', default='en-US_BroadbandModel', help='STT model that will be used')
    parser.add_argument('-threads', action='store', dest='threads', default='10', help='number of simultaneous STT sessions', type=check_positive_int)
    parser.add_argument('-optout', action='store_true', dest='optOut', help='specify opt-out header so user data, such as speech and hypotheses are not logged into the server')
-   parser.add_argument('-tokenauth', action='store_true',5 dest='tokenauth', help='use token based authentication')
+   #parser.add_argument('-tokenauth', action='store_true',5 dest='tokenauth', help='use token based authentication')
    args = parser.parse_args()
    args.credentials =[]
 
@@ -259,18 +259,19 @@ if __name__ == '__main__':
    args.credentials.append('GWWfFELamIJj')
    args.model = 'en-US_BroadbandModel'
    args.thread = 10
-
+   args.tokenauth = 0
 #python sttClient.py -credentials fab6a06b-4caa-4656-b3a6-43f37cbbebd9:GWWfFELamIJj -model en-US_BroadbandModel -threads 10
 
    # create output directory if necessary
    if (os.path.isdir(args.dirOutput)):
-      while True:
-         answer = raw_input("the output directory \"" + args.dirOutput + "\" already exists, overwrite? (y/n)? ")
-         if (answer == "n"):
-            sys.stderr.write("exiting...")
-            sys.exit()
-         elif (answer == "y"):
-            break
+      1
+     # while True:
+       #  answer = raw_input("the output directory \"" + args.dirOutput + "\" already exists, overwrite? (y/n)? ")
+        # if (answer == "n"):
+        #    sys.stderr.write("exiting...")
+        #    sys.exit()
+      #   elif (answer == "y"):
+     #       break
    else:
       os.makedirs(args.dirOutput)
 
