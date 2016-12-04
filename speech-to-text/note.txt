@@ -1,0 +1,9 @@
+python ./sttClient.py -credentials fab6a06b-4caa-4656-b3a6-43f37cbbebd9:GWWfFELamIJj -model en-US_BroadbandModel -threads 10
+
+
+
+python sttClient.py -credentials fab6a06b-4caa-4656-b3a6-43f37cbbebd9:GWWfFELamIJj -model en-US_BroadbandModel -threads 10
+
+
+
+python sttClient.py -h 
