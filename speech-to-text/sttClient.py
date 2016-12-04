@@ -244,15 +244,23 @@ if __name__ == '__main__':
 
    # parse command line parameters
    parser = argparse.ArgumentParser(description='client to do speech recognition using the WebSocket interface to the Watson STT service')
-   parser.add_argument('-credentials', action='store', dest='credentials', help='Basic Authentication credentials in the form \'username:password\'', required=True, type=check_credentials)
+   #parser.add_argument('-credentials', action='store', dest='credentials', help='Basic Authentication credentials in the form \'username:password\'', required=True, type=check_credentials)
    parser.add_argument('-in', action='store', dest='fileInput', default='./recordings.txt', help='text file containing audio files')
    parser.add_argument('-out', action='store', dest='dirOutput', default='./output', help='output directory')
    parser.add_argument('-type', action='store', dest='contentType', default='audio/wav', help='audio content type, for example: \'audio/l16; rate=44100\'')
    parser.add_argument('-model', action='store', dest='model', default='en-US_BroadbandModel', help='STT model that will be used')
    parser.add_argument('-threads', action='store', dest='threads', default='10', help='number of simultaneous STT sessions', type=check_positive_int)
    parser.add_argument('-optout', action='store_true', dest='optOut', help='specify opt-out header so user data, such as speech and hypotheses are not logged into the server')
-   parser.add_argument('-tokenauth', action='store_true', dest='tokenauth', help='use token based authentication')
+   parser.add_argument('-tokenauth', action='store_true',5 dest='tokenauth', help='use token based authentication')
    args = parser.parse_args()
+   args.credentials =[]
+
+   args.credentials.append('fab6a06b-4caa-4656-b3a6-43f37cbbebd9')
+   args.credentials.append('GWWfFELamIJj')
+   args.model = 'en-US_BroadbandModel'
+   args.thread = 10
+
+#python sttClient.py -credentials fab6a06b-4caa-4656-b3a6-43f37cbbebd9:GWWfFELamIJj -model en-US_BroadbandModel -threads 10
 
    # create output directory if necessary
    if (os.path.isdir(args.dirOutput)):
