@@ -15,9 +15,10 @@
 #
 
 # Author: Daniel Bolanos
-# Date:   2015
+# Date   2015
 
 # coding=utf-8
+import speechbot.QA.dataInterface as dataInt 
 import json                                      # json 
 import threading                                 # multi threading
 import os                                        # for listing directories
@@ -335,6 +336,7 @@ if __name__ == '__main__':
       else:
          print str(key) + ": ", value['status']['code'], " REASON: ", value['status']['reason']
       
+      dataInt.gatherData()
 
 
 
