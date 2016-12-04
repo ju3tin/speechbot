@@ -1,5 +1,5 @@
 
 
-import dataInterface
-dataInterface.gatherData()
-dataInterface.returnBestAnswer("When is visiting hours")
+#import dataInterface
+#dataInterface.gatherData()
+#dataInterface.returnBestAnswer("When is visiting hours")

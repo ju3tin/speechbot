@@ -18,11 +18,20 @@
 # Date   2015
 
 # coding=utf-8
+
+import os
+dir = os.path.dirname(__file__)
+#print(__file__)
+#print(dir)
+folder = os.path.join(dir, '..','..')
+print (folder)
+
 import sys
-sys.path.append('../../')
+sys.path.append(folder)
 
 from speechbot import QA
 import speechbot.QA.dataInterface as dataInt 
+from speechbot import textToSpeech
 import json                                      # json 
 import threading                                 # multi threading
 import os                                        # for listing directories
@@ -245,11 +254,9 @@ def check_credentials(credentials):
       raise argparse.ArgumentTypeError("\"%s\" is not a valid format for the credentials " % credentials)
 
 
-if __name__ == '__main__':
 
-   # parse command line parameters
+def speechToTextAndTextToSpeech():
    parser = argparse.ArgumentParser(description='client to do speech recognition using the WebSocket interface to the Watson STT service')
-   #parser.add_argument('-credentials', action='store', dest='credentials', help='Basic Authentication credentials in the form \'username:password\'', required=True, type=check_credentials)
    parser.add_argument('-in', action='store', dest='fileInput', default='./recordings.txt', help='text file containing audio files')
    parser.add_argument('-out', action='store', dest='dirOutput', default='./output', help='output directory')
    parser.add_argument('-type', action='store', dest='contentType', default='audio/wav', help='audio content type, for example: \'audio/l16; rate=44100\'')
@@ -265,27 +272,27 @@ if __name__ == '__main__':
    args.model = 'en-US_BroadbandModel'
    args.thread = 10
    args.tokenauth = 0
+
+
+   fileInput = os.path.join(dir, 'recordings.txt')
+   print ('>>>>'+fileInput)
+   args.fileInput = fileInput
+   dirOutput = os.path.join(dir, 'output')
+   args.dirOutput  = dirOutput
 #python sttClient.py -credentials fab6a06b-4caa-4656-b3a6-43f37cbbebd9:GWWfFELamIJj -model en-US_BroadbandModel -threads 10
 
    # create output directory if necessary
    if (os.path.isdir(args.dirOutput)):
       1
-     # while True:
-       #  answer = raw_input("the output directory \"" + args.dirOutput + "\" already exists, overwrite? (y/n)? ")
-        # if (answer == "n"):
-        #    sys.stderr.write("exiting...")
-        #    sys.exit()
-      #   elif (answer == "y"):
-     #       break
    else:
       os.makedirs(args.dirOutput)
 
-   # logging
    log.startLogging(sys.stdout)
 
-   # add audio files to the processing queue
    q = Queue.Queue()
-   lines = [line.rstrip('\n') for line in open(args.fileInput)]
+   lines = [os.path.join(dir,line.rstrip('\n')) for line in open(args.fileInput)]
+   print (">>> ")
+   print (lines)
    fileNumber = 0
    for fileName in(lines):
       print fileName
@@ -344,15 +351,11 @@ if __name__ == '__main__':
       hypothesis = value['hypothesis'].encode('utf-8') 
       bestAnswer = dataInt.returnBestAnswer(hypothesis)
       print (bestAnswer)
-
-
+      textToSpeech.textToSpeech(bestAnswer)
       f.write(hypothesis + "\n")
-     
-#            f.write(str(counter) + ": " + value['hypothesis'].encode('utf-8') + "\n")
-
-
-
       counter += 1
    f.close()
    print "successful sessions: ", successful, " (", len(summary)-successful, " errors) (" + str(emptyHypotheses) + " empty hypotheses)"
 
+if __name__ == '__main__':
+    speechToTextAndTextToSpeech()

@@ -27,7 +27,14 @@ def text_to_vector(text):
      return Counter(words)
 
 def gatherData():
-    con = lite.connect('../QA/SQLiteStudio/techCrunch2016DB')
+    import os
+    dir = os.path.dirname(__file__)
+    print(__file__)
+    print(dir)
+    filename = os.path.join(dir, 'SQLiteStudio','techCrunch2016DB')
+
+    print(filename)
+    con = lite.connect(filename)
 
     with con:    
         
