@@ -4,3 +4,4 @@ requests>=2.8.1
 Twisted>=13.2.0
 txaio>=2.0.4
 service_identity>=16.0.0
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
